@@ -75,6 +75,8 @@ price    |  double  | Estimated price, without oncoming fees in euros
 Example
 -------
 
+Request: `https://api.openmaraude.fr/v1/taxis?lon=47.88&lat=12.33&destination_lon=47.92&destination_lat=13.3`
+
 ```
 {
     "taxis": {
@@ -86,7 +88,7 @@ Example
              "caracteristics": ["dog_accepted"],
              "company_id": "company1",
              "car_id": "car:1",
-             "pickup": "api.taxi.fr/v1/taxi/taxi1/pickup",
+             "pickup": "https://api.openmaraude.fr/v1/taxi/taxi1/pickup?lon=47.88&lat=12.33&creation_datetime=12331221",
              "pickable_by_phone": true 
              "pickable_by_api": false,
              "last_update": 11229339,
