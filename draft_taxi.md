@@ -13,14 +13,11 @@ Retrives taxi around coordinates.
 | hailable_via_api   | bool   |  No       |  true         | Filter taxis hailable or not via API                       |
 | hailable_via_phone | bool   |  No       |  false        | Filter taxis hailable or not via phone                     |
 | min_seats          | int    |  No       |  4            | Only returns cars with this number of seats or higher      |
-| destination_lon    | double |  No       |  46.777       | The API will retrieve estimated distance to the arrival to |
-| destination_lat    | double |  No       |  34.4         | The destination when it's filled up.                       |
-
 
 ##Response##
 
 If the HTTP response code is 200, the response is compouned of a dictionnary 
-of taxis, a dictionnary of companies, and a destination object.
+of taxis and a dictionnary of companies.
 
 ###Description of a taxi object###
 
@@ -57,16 +54,9 @@ of taxis, a dictionnary of companies, and a destination object.
 | model  | string   | Model of the car                        |
 | seats  | int      | Number of available seats in the car    |
 
-###Destination###
-
-| Field    | Type     | Description                                      |
-|----------|----------|--------------------------------------------------|
-| distance |  int     | Estimated distance to the destination in meters  |
-| price    |  double  | Estimated price, without oncoming fees in euros  |
-
 ##Example##
 
-Request: `https://api.openmaraude.fr/v1/taxis?lon=47.88&lat=12.33&destination_lon=47.92&destination_lat=13.3`
+Request: `https://api.openmaraude.fr/v1/taxis?lon=47.88&lat=12.33`
 
 ```
 {
@@ -96,10 +86,6 @@ Request: `https://api.openmaraude.fr/v1/taxis?lon=47.88&lat=12.33&destination_lo
         "company:1": {
             "name": "Super Taxi"
         }
-    }
-    "destination": {
-        "distance": 5789,
-        "price": 15.4
     }
 }
 ```
