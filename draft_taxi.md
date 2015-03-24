@@ -20,8 +20,7 @@ Retrives taxi around coordinates.
 ##Response##
 
 If the HTTP response code is 200, the response is compouned of a dictionnary 
-of taxis, a dictionnary of companies, a dictionnary of car brands, and a
-destination object.
+of taxis, a dictionnary of companies, and a destination object.
 
 ###Description of a taxi object###
 
@@ -33,8 +32,8 @@ destination object.
 | speed               | double          | Speed of the taxi in m/s                        |
 | caracteristics      | list of strings | Special caracteristrics of the taxi             |
 | company_id          | string          | Company id                                      |
-| brand_id            | string          | Brand id                                        |
-| hail                | href            | Link to hail this taxi                   |
+| car                 | car             | Description of a the car                        |
+| hail                | href            | Link to hail this taxi                          |
 | hailable_by_phone   | bool            | Is the taxi hailable via API                    |
 | hailable_by_api     | bool            | Is the taxi hailable via phone                  |
 | last_update         | int             | Unix timestamp of the last update               |
@@ -79,7 +78,11 @@ Request: `https://api.openmaraude.fr/v1/taxis?lon=47.88&lat=12.33&destination_lo
              "speed": 1.2,
              "caracteristics": ["dog_accepted"],
              "company_id": "company1",
-             "car_id": "car:1",
+             "car": {
+                "brand": "renault",
+                "model": "velstatis",
+                "seats": 3
+             },
              "hail": "https://api.openmaraude.fr/v1/taxi/taxi1/hail?lon=47.88&lat=12.33&creation_datetime=12331221",
              "hailable_by_phone": true 
              "hailable_by_api": false,
@@ -92,13 +95,6 @@ Request: `https://api.openmaraude.fr/v1/taxis?lon=47.88&lat=12.33&destination_lo
     "companies": {
         "company:1": {
             "name": "Super Taxi"
-        }
-    },
-    "cars": {
-        "car:1": {
-            "brand": "renault",
-            "model": "velstatis",
-            "seats": 3
         }
     }
     "destination": {
